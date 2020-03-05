@@ -1,0 +1,202 @@
+@import "variables";
+
+* {
+    margin: 0;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+}
+nav {
+    background-color: white;
+    width:100%;
+    display: flex;
+    padding: 40px 0px 20px 0px;
+    justify-content: space-between;
+    ul {
+        list-style: none;
+        padding-top: 30px;
+        li {
+            display: inline;
+            a {
+                text-decoration: none;
+                color:$text-color;
+                margin: 0px 0px 0px 45px;
+                font-size: 12px;
+            }
+            
+        }
+        
+    }
+}
+header {
+    background-color: $header-bg;
+    width: 100%;
+    color:$text-color;
+    font-size: 14px;
+    a:hover {
+        text-shadow: 0 0.4px;
+    }
+    .header-image {
+        padding: 30px 0px 30px 0px;
+        text-align: center;
+        img {
+            width:80%;
+        } 
+    }
+}
+.delivery-message {
+    background-color: $delivery-bg;
+    padding: 15px;
+    padding-left: 25px;
+    color: white;
+}
+.login-cart {
+    padding-top: 30px;
+    a {
+        padding-top: 30px;
+        text-decoration: none;
+        color:$text-color;
+        margin: 0px 20px 0px 20px;
+        font-size: 12px;
+        .cart-number {
+            background-color: red;
+            color:white;
+            padding:2px 7px 2px 7px;
+            border-radius: 15px;
+        }
+    }
+}
+/* This hides the hamburger and its content */
+.topnav {
+    display: none;
+}
+main {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 10px auto;
+    .dish {
+        display: flex;
+        flex: 1 1 40%;
+        .dish-image img {
+            width: 100%;
+        }
+        
+        .dish-image {
+            width: 40%;
+        }
+        
+        .dish-description {
+            padding: 20px;
+            width: 60%;
+            text-align: justify;
+            h1 {
+                font-weight: bold;
+                font-size: 16px;
+                margin-top: 0;
+            }
+        }        
+    }
+}
+
+
+@for $i from 1 through 4 {
+    .dish:nth-child(#{$i}) {
+        @if ($i > 2 ) {
+            flex-direction: row-reverse;
+        }
+    }
+} 
+
+
+
+footer {
+    width: 100%;
+    background-color: $header-bg;
+    color: white;
+    padding: 40px 0;
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width : 1024px) {
+    main {
+        width: 100%;
+        .dish {
+            flex: 1 1 100%;
+            margin: 10px 0;
+            .dish-description {
+                padding: 1%;
+            }
+       }
+    }
+}
+@media only screen and (max-width: 1112px) {
+    .topnav {
+        display: block;
+        overflow: hidden;
+        background-color: white;
+        #myLinks {
+            display: none;
+            a {
+                color: $text-color;
+                padding: 10px 10px 10px 20px;
+                text-decoration: none;
+                font-size: 17px;
+                display: block;
+                height: 20px;
+                border-bottom: 1px solid $transparent-grey;
+            }
+            .cart-number {
+                background-color: red;
+                color:white;
+                padding:2px 7px 2px 7px;
+                border-radius: 15px;
+
+            }
+        }
+        /* Style navigation menu links */
+        
+    }
+    nav {
+        display: none;
+    }
+    
+    /* Style the hamburger menu */
+    .hamburger {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        color: white;
+        font-size: 20px;
+        padding: 10px;
+    }
+    .header-image {
+        img {
+            width: inherit;
+        }
+
+    }
+}
+
+@media only screen and (max-width : 450px) {
+    header{
+
+    .header-image{
+        img{
+            width: 100%;
+        }
+    }
+}
+    main {
+        @for $i from 1 through 4 {
+            .dish:nth-child(#{$i}) {
+                flex-direction: column;
+                .dish-image, .dish-description {
+                    width: 100%;
+                }
+            }
+        } 
+    }
+}
